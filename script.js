@@ -7,10 +7,11 @@ let continuarCompra = false;
 let precioTotal = 0;
 let descuento = 0.9;
 let totalDescuento = 0;
+
 const comprarGomas =  () => {
 
 
-  
+
     do {
         cubiertas = prompt ("¿Que cubiertas quieres comprar? Auto, Camioneta, Camion o Moto");
         cantidad = parseInt(prompt("Ingrese cantidad"));
@@ -36,15 +37,17 @@ const comprarGomas =  () => {
                 cantidad= 0;
             
         }
+        
 
-        cantidadTotal += precio* cantidadValidada;
+
+        precioTotal += precio * cantidadValidada;
         continuarCompra = confirm("¿Desea otra cubierta?");
 
 
     } while (continuarCompra);
 
-
-    console.log(precioTotal)
+    const totalConDescuento = calcularDescuento (precioTotal)
+    console.log(totalConDescuento)
     
 
 
@@ -61,15 +64,16 @@ const validarCantidad  = (cantidad) => {
     }
     return cantidad;
 }
-// const calcularDescuento = (precio) => {
-//     if(cantidad >= 4){
-//         precio=precio*0.9
-//         return precio
-//     } else{
-//         return precio
-//     }
+const calcularDescuento = (precioTotal) => {
+    if(precioTotal >= 80000){
+        totalDescuento = precioTotal * 0.9
+        return totalDescuento
+    } else{
+        return precioTotal
+    }
         
-// }
+}
 
 
 comprarGomas()
+calcularDescuento()
